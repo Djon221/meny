@@ -84,8 +84,9 @@ function goToNewPage3() {
 
 function goToNewPage4() {
     // Переход на новую страницу при клике на элемент с классом box
-    window.location.href = '/ib5/index5.html';
+    window.location.href = '/i5/index4.html';
 }
+
 
 function goToNewPageB() {
     // Переход на новую страницу при клике на элемент с классом box
