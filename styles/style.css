@@ -91,6 +91,9 @@ header{
     box-shadow: var(--box-shadow);
 }
 
+
+
+
 header .logo{
     color:var(--black);
     font-size: 1.7rem;
@@ -128,6 +131,17 @@ header .navbar a:hover{
     background-color:rgb(52, 105, 250);
 }
 
+.shopping{
+    display: inline-block; 
+}
+
+.shopping img{
+    width: 20px;
+    position: relative; 
+    top: 3.5px;    
+}
+
+
 header .icons i,
 header .icons a{
     cursor: pointer;
@@ -141,6 +155,8 @@ header .icons a{
     border-radius: 50%;
     background: #eee;
 }
+
+
 
 header .icons i:hover,
 header .icons a:hover{

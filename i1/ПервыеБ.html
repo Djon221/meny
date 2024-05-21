@@ -28,11 +28,18 @@
         <i class="fas fa-bars" id="menu-bars"></i>
         <i class="fas fa-search" id="search-icon"></i>
         <a href="#" class="fas fa-heart"></a>
-        <a href="#" class="fas fa-shopping-cart"></a>
+        <a href="#" class="shopping">
+            <img src="../images/корзина.png" alt="">       
+        </a>
     </div>
 
 </header>
 
+<form action="" id="search-form">
+    <input type="search" name="" placeholder="Ищите здесь..." id="search-box">
+    <label for="search-box" class="fas fa-search"></label>
+    <i class="fas fa-times" id="close"></i>
+</form>
 
 <section class="menu" id="menu">
     <h3 class="sub-heading1">Ваше меню</h3>
@@ -53,7 +60,13 @@
                 </div>
                 <h3>Борщ</h3>
                 <p>Насыщенный красный борщ с нежным мясом, свежими овощами и ароматными специями</p>
-                <a href="#" class="btn">В корзину</a>
+                <a href="#" class="btn" 
+
+                data-sb-product-name="Борщ"
+                data-sb-product-price="100"
+                data-sb-product-quantity="1"
+                data-sb-product-img="../images/31.jpg">В корзину</a>
+
                 <span class="price">100 руб</span>
 
             </div>
@@ -106,9 +119,6 @@
                 <span class="price">100 руб</span>
 
             </div>
-
-            
-
         </div>
 
         <div class="box">
@@ -161,6 +171,13 @@
 
 
 
+
+    
+
+
+
+
+    
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="../scripts/script.js"></script>
 </body>
