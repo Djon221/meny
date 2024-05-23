@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="../styles/style.css">
     <title>Document</title>
 </head>
@@ -27,9 +28,20 @@
     <div class="icons">
         <i class="fas fa-bars" id="menu-bars"></i>
         <i class="fas fa-search" id="search-icon"></i>
-        <a href="#" class="fas fa-heart"></a>
-        <a href="#" class="fas fa-shopping-cart"></a>
-    </div>
+        <i href="#" class="shopping" id="cart-icon">
+          <img src="../images/корзина.png" alt="" />
+        </i>
+        <div class="cart">
+          <h2 class="cart-title">Твоя корзина</h2>
+          <div class="cart-content"></div>
+          <div class="total">
+            <div class="total-title">Сумма</div>
+            <div class="total-price">0₽</div>
+          </div>
+          <button type="button" class="btn-buy">Заказать</button>
+          <i class="bx bx-x" id="close-cart"></i>
+        </div>
+      </div>
 
 </header>
 <form action="" id="search-form">
@@ -44,7 +56,7 @@
     <div class="box-container">
         <div class="box">
             <div class="image">
-                <img src="../images/14.jpg" alt="">
+                <img src="../images/14.jpg" alt="" class="product-img">
                 <a href="#" class="fas fa-heart"></a>
             </div>
             <div class="content">
@@ -55,9 +67,9 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star-half-alt"></i>
                 </div>
-                <h3>Лунное сияние в клубничном раю</h3>
+                <h3 class="product-title">Лунное сияние в клубничном раю</h3>
                 <p>Клубничный чизкейк с белым шоколадом и глазурью</p>
-                <a href="#" class="btn">В корзину</a>
+                <button class="btn">В корзину</button>
                 <span class="price">120 руб</span>
 
             </div>
@@ -66,7 +78,7 @@
 
         <div class="box">
             <div class="image">
-                <img src="../images/4.jpg" alt="">
+                <img src="../images/4.jpg" alt="" class="product-img">
                 <a href="#" class="fas fa-heart"></a>
             </div>
             <div class="content">
@@ -77,9 +89,9 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star-half-alt"></i>
                 </div>
-                <h3>Розовый закат на ванильном небе</h3>
+                <h3 class="product-title">Розовый закат на ванильном небе</h3>
                 <p>Ванильный панна-котта с клубникой и мятным сиропом</p>
-                <a href="#" class="btn">В корзину</a>
+                <button class="btn">В корзину</button>
                 <span class="price">120 руб</span>
 
             </div>
@@ -88,7 +100,7 @@
 
         <div class="box">
             <div class="image">
-                <img src="../images/3.jpg" alt="">
+                <img src="../images/3.jpg" alt="" class="product-img">
                 <a href="#" class="fas fa-heart"></a>
             </div>
             <div class="content">
@@ -99,9 +111,9 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star-half-alt"></i>
                 </div>
-                <h3>Блинчики</h3>
+                <h3 class="product-title">Блинчики</h3>
                 <p>Блинчики из тонкого теста, с насыщенным и аппетитным вкусом</p>
-                <a href="#" class="btn">В корзину</a>
+                <button class="btn">В корзину</button>
                 <span class="price">120 руб</span>
 
             </div>
@@ -110,7 +122,7 @@
 
         <div class="box">
             <div class="image">
-                <img src="../images/20.jpg" alt="">
+                <img src="../images/20.jpg" alt="" class="product-img">
                 <a href="#" class="fas fa-heart"></a>
             </div>
             <div class="content">
@@ -121,9 +133,9 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star-half-alt"></i>
                 </div>
-                <h3>Ягодная симфония</h3>
+                <h3 class="product-title">Ягодная симфония</h3>
                 <p> Ягодный торт с ванильным сиропом.</p>
-                <a href="#" class="btn">В корзину</a>
+                <button class="btn">В корзину</button>
                 <span class="price">120 руб</span>
 
             </div>
@@ -138,7 +150,27 @@
 
 </section>
 
+<script>
+    // Функция для получения параметров из URL
+    function getQueryParams() {
+      const params = {};
+      const queryString = window.location.search.slice(1);
+      const pairs = queryString.split("&");
 
+      for (const pair of pairs) {
+        const [key, value] = pair.split("=");
+        params[key] = decodeURIComponent(value || "");
+      }
+      return params;
+    }
+
+    // Обработчик для кнопки "Назад"
+    document.getElementById("back-button").addEventListener("click", () => {
+      const params = getQueryParams();
+      const fromPage = params.from || "index1.html"; // По умолчанию возврат на index1.html, если параметр не найден
+      window.location.href = fromPage;
+    });
+  </script>
 
 
 

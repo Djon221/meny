@@ -66,7 +66,18 @@ var swiper = new Swiper(".review-slider", {
 
 
 document.getElementById('back-button').addEventListener('click', () => {
-    history.back();
+    history.pushState(null, null, 'index1.html');
+
+    // Используем Fetch API для загрузки содержимого index.html
+    fetch('index.html')
+        .then(response => response.text())
+        .then(html => {
+            // Заменяем текущее содержимое страницы новым
+            document.body.innerHTML = html;
+        })
+        .catch(error => {
+            console.error('Ошибка при загрузке страницы:', error);
+        });
 });
 
 
@@ -92,7 +103,7 @@ function goToNewPage3() {
 
 function goToNewPage4() {
     // Переход на новую страницу при клике на элемент с классом box
-    window.location.href = '/i5/index4.html';
+    window.location.href = '/i5/index5.html';
 }
 
 
@@ -147,7 +158,7 @@ function DirectoryN1B6() {
 
 function DirectoryN1B1Main() {
     // Переход на новую страницу при клике на элемент с классом box
-    window.location.href = 'index.html';
+    window.location.href = 'index1.html';
 }
 
 

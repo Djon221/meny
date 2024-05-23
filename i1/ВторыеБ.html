@@ -27,23 +27,21 @@
 
     <div class="icons">
         <i class="fas fa-bars" id="menu-bars"></i>
-        <i class="fas fa-search" id="search-icon"></i>  
+        <i class="fas fa-search" id="search-icon"></i>
         <i href="#" class="shopping" id="cart-icon">
-            <img src="../images/корзина.png" alt="">     
+          <img src="../images/корзина.png" alt="" />
         </i>
         <div class="cart">
-            <h2 class="cart-title">Твоя корзина</h2>
-            <div class="cart-content">
-            </div>
-            <div class="total">
-                <div class="total-title">Сумма</div>
-                <div class="total-price">0₽</div>
-            </div>
-            <button type="button" class="btn-buy">Заказать</button>
-            <i class='bx bx-x' id="close-cart"></i>
+          <h2 class="cart-title">Твоя корзина</h2>
+          <div class="cart-content"></div>
+          <div class="total">
+            <div class="total-title">Сумма</div>
+            <div class="total-price">0₽</div>
+          </div>
+          <button type="button" class="btn-buy">Заказать</button>
+          <i class="bx bx-x" id="close-cart"></i>
         </div>
-
-    </div>
+      </div>
 
 </header>
 <form action="" id="search-form">
@@ -284,7 +282,27 @@
 
 </section>
 
+<script>
+    // Функция для получения параметров из URL
+    function getQueryParams() {
+      const params = {};
+      const queryString = window.location.search.slice(1);
+      const pairs = queryString.split("&");
 
+      for (const pair of pairs) {
+        const [key, value] = pair.split("=");
+        params[key] = decodeURIComponent(value || "");
+      }
+      return params;
+    }
+
+    // Обработчик для кнопки "Назад"
+    document.getElementById("back-button").addEventListener("click", () => {
+      const params = getQueryParams();
+      const fromPage = params.from || "index1.html"; // По умолчанию возврат на index1.html, если параметр не найден
+      window.location.href = fromPage;
+    });
+  </script>
 
 
 
