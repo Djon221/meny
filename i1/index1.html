@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../libs/modal/modal.css">
     <link rel="stylesheet" href="../styles/style.css">
     <title>Document</title>
 </head>
@@ -40,10 +41,77 @@
                 <div class="total-title">Сумма</div>
                 <div class="total-price">0₽</div>
             </div>
-            <button type="button" class="btn-buy">Заказать</button>
+            <button type="button" class="btn-buy" data-path="first" data-animation="fade">Заказать</button>
             <i class='bx bx-x' id="close-cart"></i>
         </div>
-
+    </div>
+    <div class="modal">
+        <div class="modal-container order-modal" role="dialog" arial-modal="true" data-target="first">
+            <div class="modal-content order-modal_content">
+                <div class="order-modal_top">
+                    <h2 class="order-modal_title">Офомление заказа</h2>
+                    <span class="order-modal_number">Заказ № 3456 67</span>
+                </div>
+                <div class="order-modal_info">
+                    <div class="order-modal_quantity order-modal_info-item">Товаров в заказе:
+                        <span>3 шт</span>
+                    </div>
+                    <div class="order-modal_summ order-modal_info-item">Общая сумма заказа: 
+                        <span>568 789 ₽</span>
+                    </div> 
+                    <div class="order-modal_products order-modal_info-item">
+                        <button class="order-modal_btn">Состав заказа</button>
+                        <ul class="order-modal_list">
+                            <li class="order-modal_item">
+                                <article class="order-modal_product order-product">
+                                    <img src="../images/product2.jpg" alt="" class="order-product_img">
+                                    <div class="order-product_text">
+                                        <h3 class="order-product_title">Солянка</h3>
+                                        <span class="order-product_price">100₽</span>
+                                    </div>
+                                    <button class="order-product_delete">Удалить</button>
+                                </article>
+                            </li>
+                            <li class="order-modal_item">
+                                <article class="order-modal_product order-product">
+                                    <img src="../images/product2.jpg" alt="" class="order-product_img">
+                                    <div class="order-product_text">
+                                        <h3 class="order-product_title">Солянка</h3>
+                                        <span class="order-product_price">100₽</span>
+                                    </div>
+                                    <button class="order-product_delete">Удалить</button>
+                                </article>
+                            </li>
+                            <li class="order-modal_item">
+                                <article class="order-modal_product order-product">
+                                    <img src="../images/product2.jpg" alt="" class="order-product_img">
+                                    <div class="order-product_text">
+                                        <h3 class="order-product_title">Солянка</h3>
+                                        <span class="order-product_price">100₽</span>
+                                    </div>
+                                    <button class="order-product_delete">Удалить</button>
+                                </article>
+                            </li>
+                        </ul>
+                    </div>
+			    </div>
+                <form action="" class="order-modal_form order">
+                    <label class="order_label">
+                        <span class="order_text">Ваше имя</span>
+                        <input type="text" name="Имя" class="order_input">
+                    </label>
+                    <label class="order_label">
+                        <span class="order_text">Номер телефона</span>
+                        <input type="tel" name="Телефон" class="order_input" placeholder="+7 (___)___-__-__">
+                    </label>
+                    <label class="order_label">
+                        <span class="order_text">Ваше имя</span>
+                        <input type="email" name="Email" class="order_input" placeholder="post@gmail.com">
+                    </label>
+                    <button class="order_btn btn-buy">Оформить заказ</button>
+                </form>
+            </div>
+        </div>
     </div>
 </header>
 <form action="" id="search-form">
@@ -169,7 +237,7 @@
 
 
 
-    
+    <script src="../libs/modal/modal.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="../scripts/script.js"></script>
 </body>

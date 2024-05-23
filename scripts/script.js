@@ -1,5 +1,11 @@
+const orderModalOpenProd = document.querySelector('.order-modal_btn');
+const orderModalList = document.querySelector('.order-modal_list');
+const cartProductsList = document.querySelector('.cart');
+
+
 let menu = document.querySelector('#menu-bars');
 let navbar = document.querySelector('.navbar');
+let productArray = [];
 
 menu.onclick = () =>{
     menu.classList.toggle('fa-times');
@@ -464,3 +470,115 @@ function loadCartFromLocalStorage() {
 
     updateTotal();
 }
+
+
+let flag = 0;
+orderModalOpenProd.addEventListener('click', (e) => {
+    if (flag == 0) {
+        orderModalOpenProd.classList.add('open');
+        orderModalList.style.display ='block';
+        flag = 1;
+    } else {
+        orderModalOpenProd.classList.remove('open');
+        orderModalList.style.display ='none';
+        flag = 0;
+    }
+
+}); 
+
+
+document.querySelector('.btn-buy').addEventListener('click', () => {
+    const orderModalList = document.querySelector('.order-modal_list');
+    const orderModalQuantity = document.querySelector('.order-modal_quantity span');
+    const orderModalSumm = document.querySelector('.order-modal_summ span');
+    orderModalList.innerHTML = ""; // Очищаем содержимое модального окна перед заполнением
+
+    // Получаем содержимое корзины
+    var cartContent = document.querySelector('.cart-content');
+    var cartBoxes = cartContent.querySelectorAll('.cart-box');
+
+    let totalQuantity = 0;
+    let totalPrice = 0;
+
+    // Проходимся по товарам в корзине и добавляем их в модальное окно
+    cartBoxes.forEach(cartBox => {
+        var title = cartBox.querySelector('.cart-product-title').innerText;
+        var price = parseFloat(cartBox.querySelector('.cart-price').innerText.replace("₽", ""));
+        var productImg = cartBox.querySelector('.cart-img').src;
+        var quantity = cartBox.querySelector('.cart-quantity').value;
+
+        var modalProductHTML = generateModalProduct(productImg, title, price, quantity);
+        orderModalList.insertAdjacentHTML('beforeend', modalProductHTML);
+
+        totalQuantity += parseInt(quantity);
+        totalPrice += price * quantity;
+
+        let obj = {};
+        obj.title = title;
+        obj.price = price;
+        obj.quantity = quantity; // Добавляем количество
+        productArray.push(obj);
+    });
+
+    orderModalQuantity.innerText = `${totalQuantity} шт`;
+    orderModalSumm.innerText = `${totalPrice.toFixed(2)} ₽`;
+
+    
+});
+
+
+
+// Функция для создания HTML-разметки товара в модальном окне
+function generateModalProduct(img, title, price, quantity) {
+    return `
+    <li class="order-modal_item">
+        <article class="order-modal_product order-product">
+            <img src="${img}" alt="" class="order-product_img">
+            <div class="order-product_text">
+                <h3 class="order-product_title">${title}</h3>
+                <span class="order-product_price">${price} ₽</span>
+                <span class="order-product_quantity">Кол-во: ${quantity}</span>
+            </div>
+        </article>
+    </li>
+    `;
+}
+
+    
+
+const modal = new Modal({
+	isOpen: (modal) => {
+		console.log('opened');
+	},
+	isClose: () => {
+		console.log('closed');
+	},
+});
+
+document.querySelector('.order').addEventListener('submit', (e) => {
+    e.preventDefault();
+    let self = e.currentTarget;
+    let formData = new FormData();
+    let name = self.querySelector('[name="Имя"] ').value;
+    let tel = self.querySelector('[name="Телефон"]').value;
+    let mail = self.querySelector('[name="Email"]').value;
+    formData.append('Товары', JSON.stringify(productArray));
+    formData.append('Имя', name);
+    formData.append('Телефон', tel);
+    formData.append('Email', mail);
+
+    let xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.stats === 200) {
+                console.log('Отправлено')
+            }
+        }
+    }
+
+    xhr.open('POST', 'mail.php', true);
+    xhr.send(formData);
+
+    self.reset();
+})
