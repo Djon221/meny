@@ -20,7 +20,7 @@
     </a>
 
     <nav class="navbar">
-        <a href="#" class="back-link" onclick="DirectoryN2B1Main()">Назад</a>
+        <a href="#" class="back-link" id="back-button">Назад</a>
         <a href="#menu">Меню</a>
     </nav>
 
@@ -118,7 +118,27 @@
 
 </section>
 
+<script>
+    // Функция для получения параметров из URL
+    function getQueryParams() {
+      const params = {};
+      const queryString = window.location.search.slice(1);
+      const pairs = queryString.split("&");
 
+      for (const pair of pairs) {
+        const [key, value] = pair.split("=");
+        params[key] = decodeURIComponent(value || "");
+      }
+      return params;
+    }
+
+    // Обработчик для кнопки "Назад"
+    document.getElementById("back-button").addEventListener("click", () => {
+      const params = getQueryParams();
+      const fromPage = params.from || "index2.html"; // По умолчанию возврат на index1.html, если параметр не найден
+      window.location.href = fromPage;
+    });
+  </script>
 
 
 

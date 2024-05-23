@@ -158,7 +158,7 @@ function DirectoryN1B6() {
 
 function DirectoryN1B1Main() {
     // Переход на новую страницу при клике на элемент с классом box
-    window.location.href = 'index1.html';
+    window.location.href = 'index.html';
 }
 
 
